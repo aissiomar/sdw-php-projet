@@ -1,0 +1,26 @@
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-card {
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+    margin: 20px;
+    text-align: center;
+}
+
+.hero-card img {
+    width: 100%;
+    border-radius: 10px; /* Pour arrondir les coins de l'image */
+}
+
+.hero-name {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.hero-role {
+    margin-top: 5px;
+    color: #888; /* Couleur du texte pour le rôle */
+}
