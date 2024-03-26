@@ -11,6 +11,7 @@ L'application affiche une liste de héros d'Overwatch avec leurs détails, y com
 
 - HTML
 - CSS
+- JAVASCRIPT
 - PHP
 
 ## Installation

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overwatch - Roles</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <?php
 
-// Récupérer la liste des rôles Overwatch depuis l'API
+
 $response = file_get_contents('https://overfast-api.tekrop.fr/roles');
 $data = json_decode($response, true);
 
-// Afficher les rôles
+
 echo "🎮 Roles\n";
 echo "Overwatch heroes roles\n\n";
 foreach ($data as $role) {
