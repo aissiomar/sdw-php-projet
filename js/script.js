@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             const heroesContainer = document.getElementById('heroesContainer');
-            heroesContainer.innerHTML = ''; // Clear existing content
+            heroesContainer.innerHTML = ''; 
 
             data.forEach(hero => {
                 const heroDiv = document.createElement('div');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const heroes = Array.from(document.querySelectorAll('.hero'));
         heroes.sort((a, b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
         const heroesContainer = document.getElementById('heroesContainer');
-        heroesContainer.innerHTML = ''; // Clear existing content
+        heroesContainer.innerHTML = ''; 
         heroes.forEach(hero => heroesContainer.appendChild(hero));
     });
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const heroes = Array.from(document.querySelectorAll('.hero'));
         heroes.sort((a, b) => a.querySelector('p').textContent.localeCompare(b.querySelector('p').textContent));
         const heroesContainer = document.getElementById('heroesContainer');
-        heroesContainer.innerHTML = ''; // Clear existing content
+        heroesContainer.innerHTML = '';
         heroes.forEach(hero => heroesContainer.appendChild(hero));
     });
 });
