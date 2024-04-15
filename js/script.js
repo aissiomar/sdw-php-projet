@@ -1,37 +1,55 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
 
-const urlParams = new URLSearchParams(window.location.search);
-const searchQuery = urlParams.get('search');
+    fetch(`https://overfast-api.tekrop.fr/heroes?search=${searchQuery}`)
+        .then(response => response.json())
+        .then(data => {
+            const heroesContainer = document.getElementById('heroesContainer');
+            heroesContainer.innerHTML = ''; // Clear existing content
 
+            data.forEach(hero => {
+                const heroDiv = document.createElement('div');
+                heroDiv.classList.add('hero');
 
-fetch(`https://overfast-api.tekrop.fr/heroes?search=${searchQuery}`)
-    .then(response => response.json())
-    .then(data => {
-        const heroesContainer = document.querySelector('.heroes-container');
+                const img = document.createElement('img');
+                img.src = hero.portrait;
+                img.alt = hero.name;
+                heroDiv.appendChild(img);
 
-        
-        data.forEach(hero => {
-            const heroDiv = document.createElement('div');
-            heroDiv.classList.add('hero');
+                const detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('hero-details');
 
-            const img = document.createElement('img');
-            img.src = hero.portrait;
-            img.alt = hero.name;
-            heroDiv.appendChild(img);
+                const nameHeading = document.createElement('h2');
+                nameHeading.textContent = hero.name;
+                detailsDiv.appendChild(nameHeading);
 
-            const detailsDiv = document.createElement('div');
-            detailsDiv.classList.add('hero-details');
+                const roleParagraph = document.createElement('p');
+                roleParagraph.textContent = `Role: ${hero.role}`;
+                detailsDiv.appendChild(roleParagraph);
 
-            const nameHeading = document.createElement('h2');
-            nameHeading.textContent = hero.name;
-            detailsDiv.appendChild(nameHeading);
+                heroDiv.appendChild(detailsDiv);
+                heroesContainer.appendChild(heroDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching heroes:', error));
 
-            const roleParagraph = document.createElement('p');
-            roleParagraph.textContent = `Role: ${hero.role}`;
-            detailsDiv.appendChild(roleParagraph);
+    const sortAlphaButton = document.getElementById('sortAlphaButton');
+    const sortRoleButton = document.getElementById('sortRoleButton');
 
-            heroDiv.appendChild(detailsDiv);
+    sortAlphaButton.addEventListener('click', function () {
+        const heroes = Array.from(document.querySelectorAll('.hero'));
+        heroes.sort((a, b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+        const heroesContainer = document.getElementById('heroesContainer');
+        heroesContainer.innerHTML = ''; // Clear existing content
+        heroes.forEach(hero => heroesContainer.appendChild(hero));
+    });
 
-            heroesContainer.appendChild(heroDiv);
-        });
-    })
-    .catch(error => console.error('Error fetching heroes:', error));
+    sortRoleButton.addEventListener('click', function () {
+        const heroes = Array.from(document.querySelectorAll('.hero'));
+        heroes.sort((a, b) => a.querySelector('p').textContent.localeCompare(b.querySelector('p').textContent));
+        const heroesContainer = document.getElementById('heroesContainer');
+        heroesContainer.innerHTML = ''; // Clear existing content
+        heroes.forEach(hero => heroesContainer.appendChild(hero));
+    });
+});

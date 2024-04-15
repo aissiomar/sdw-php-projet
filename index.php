@@ -7,32 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="search-container">
+    <h1>OVERWATCH HEROES</h1>
+    <div class="search-container">
         <form action="heroes.php" method="GET">
             <input type="text" name="search" placeholder="Search heroes...">
             <button type="submit">Search</button>
         </form>
     </div>
-    <?php
-    
-        $response = file_get_contents("https://overfast-api.tekrop.fr/heroes");
-        $heroes = json_decode($response, true);
-
-        
-        foreach ($heroes as $hero) {
-            $name = $hero['name'];
-            $role = $hero['role'];
-            $image = $hero['portrait'];
-
-            echo "<div class='hero'>";
-            echo "<img src='$image' alt='$name'>";
-            echo "<div class='hero-details'>";
-            echo "<h2>$name</h2>";
-            echo "<p>$role</p>";
-            echo "</div>";
-            echo "</div>";
-        }
-    ?>
-    <script src="scripts.js"></script>
+    <div class="sort-container">
+        <button id="sortAlphaButton">Sort by Name</button>
+        <button id="sortRoleButton">Sort by Role</button>
+    </div>
+    <div id="heroesContainer" class="heroes-container"></div>
+    <script src="js/script.js"></script>
 </body>
 </html>
