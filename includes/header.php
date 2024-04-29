@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><h1>OVERWATCH HEROES</h1></a>
+        <a id="title" href="index.php"><h1>OVERWATCH HEROES</h1></a>
         <div class="menu">
             <div class="search-container">
                 <form action="heroes.php" method="GET">
@@ -16,9 +16,13 @@
                     <button type="submit">Search</button>
                 </form>
             </div>
+            <div id="nav">
+               <strong> <a href="index.php">HEROES</a></strong>
+                <strong><a href="maps.php">MAPS</a></strong>
+            </div>
             <div class="sort-container">
-                <button id="sortAlphaButton">Sort by Name</button>
-                <button id="sortRoleButton">Sort by Role</button>
+                <button id="sortAlphaButton">Sort by Name A-Z</button>
+                <button id="sortAlphaButton2">Sort by Name Z-A</button>
             </div>
         </div>
     </header>

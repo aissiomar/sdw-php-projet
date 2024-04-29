@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
 
@@ -31,25 +31,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 heroDiv.appendChild(detailsDiv);
                 heroesContainer.appendChild(heroDiv);
             });
-        })
+        })  
         .catch(error => console.error('Error fetching heroes:', error));
 
     const sortAlphaButton = document.getElementById('sortAlphaButton');
-    const sortRoleButton = document.getElementById('sortRoleButton');
+    const sortAlphaButton2 = document.getElementById('sortAlphaButton2');
 
     sortAlphaButton.addEventListener('click', function () {
+        sortHeroes('asc');
+    });
+
+    sortAlphaButton2.addEventListener('click', function () {
+        sortHeroes('desc');
+    });
+
+    function sortHeroes(order) {
         const heroes = Array.from(document.querySelectorAll('.hero'));
         heroes.sort((a, b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
+
+        if (order === 'desc') {
+            heroes.reverse();
+        }
+
         const heroesContainer = document.getElementById('heroesContainer');
         heroesContainer.innerHTML = ''; 
         heroes.forEach(hero => heroesContainer.appendChild(hero));
-    });
-
-    sortRoleButton.addEventListener('click', function () {
-        const heroes = Array.from(document.querySelectorAll('.hero'));
-        heroes.sort((a, b) => a.querySelector('p').textContent.localeCompare(b.querySelector('p').textContent));
-        const heroesContainer = document.getElementById('heroesContainer');
-        heroesContainer.innerHTML = '';
-        heroes.forEach(hero => heroesContainer.appendChild(hero));
-    });
+    }
 });

@@ -7,7 +7,7 @@ h1{
     margin-bottom: 5%;
     color: black;
 }
-a{
+#title {
     text-decoration: none;
 }
 #heroesContainer{
@@ -41,4 +41,31 @@ button{
 }
 button:hover{
     background-color:rgb(173, 247, 247) ;
+}
+#nav{
+    width: 50%;
+    text-align: center;
+}
+#nav a{
+    text-decoration: none;
+    color: black;
+    margin-right: 2%;
+    text-decoration: underline;
+}
+.map-img{
+    width: 90%;
+    height: 100%;
+    border-radius: 0%;
+    margin-left:0% ;
+}
+#result{
+    width: 33%;
+}
+#map_container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    text-align: center;
 }
